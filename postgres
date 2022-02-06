@@ -1,0 +1,50 @@
+#!/bin/bash
+
+APP=`basename $0`
+
+function start() {
+  docker run --name $APP -p 5432:5432 -e POSTGRES_PASSWORD=changeme -d $APP 
+}
+
+function stop() {
+  docker stop $APP && docker rm $APP
+}
+
+function restart() {
+  stop
+  start
+}
+
+function status() {
+  docker ps -f "name=$APP" --format="table {{.ID}}\t{{.Names}}\t{{.State}}\t{{.Ports}}"
+}
+
+function_exists() {
+  declare -f -F $1 > /dev/null
+  return $?
+}
+
+# if [ "$UID" -ne 0 ]
+#   then echo "Please run as root"
+#   exit
+# fi
+
+if [ $# -lt 1 ]
+then
+  echo "Usage : $0 start|stop|restart|status "
+  exit
+fi
+
+case "$1" in
+  start)    function_exists start && start
+          ;;
+  stop)  function_exists stop && stop
+          ;;
+  restart)  function_exists restart && restart
+          ;;
+  status)  function_exists status && status
+          ;;
+  *)      echo "Invalid command - Valid->start|stop|restart"
+          ;;
+esac
+
