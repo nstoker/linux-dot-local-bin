@@ -1,0 +1,11 @@
+#!/bin/bash
+
+FILE=go.mod
+
+if [ -f "$FILE" ]; then
+    code .
+    start-goconvey
+    git cola &
+else
+    echo "Is this a go folder?"
+fi

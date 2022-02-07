@@ -1,0 +1,15 @@
+#!/bin/bash
+
+FILE=Gemfile
+
+# If postgres is already running, it's not a problem, but should add a check to avoid re-running it
+# Benchmarking with and without a check would make sense. This is the way.
+postgres start
+
+if [ -f "$FILE" ]; then
+    code .
+    start-guard
+    git cola &
+else
+    echo "$FILE missing, not a Rails project directory"
+fi

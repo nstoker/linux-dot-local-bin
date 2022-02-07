@@ -1,0 +1,9 @@
+#!/bin/sh
+
+FILE=Guardfile
+
+if [ -f "$FILE" ]; then
+	/usr/bin/gnome-terminal -- guard -c
+else
+	echo "$FILE was not found in the current directory."
+fi

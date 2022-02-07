@@ -1,0 +1,9 @@
+#!/bin/sh
+
+FILE=docker-compose-rabbit.yml
+
+if [ -f "$FILE" ]; then
+	/usr/bin/gnome-terminal -- docker-compose -f $FILE up
+else
+	echo "$FILE was not found in the current directory."
+fi
