@@ -2,12 +2,13 @@
 
 Some random scripts I find helpful.
 
+
 ## Container scripts
 
 Script      | Purpose
 ------------|---------
 `generic`   | Start and stop a container `generic`. Copy this file to the name of a container to get start, stop, status, and restart commands. It checks for the name of the file being executed using `basename $0`.
-`postgres`  | Starts and stops the postgres service. Options are: `start`, `stop`, `status`, and `restart` commands.
+`postgres`  | Starts and stops the postgres service. Options are: `start`, `stop`, `status`, and `restart` commands. You need to set an environment variable `POSTGRES_PASS` to use a different password.
 
 ### Golang related
 
