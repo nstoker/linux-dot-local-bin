@@ -2,7 +2,6 @@
 
 Some random scripts I find helpful.
 
-
 ## Container scripts
 
 Script      | Purpose
@@ -16,6 +15,7 @@ Script           | Purpose
 -----------------|---------
 `start-go`       | Checks if the directory contains a go.mod file, then starts code, go-convey, and git cola running.
 `start-goconvey` | Starts the goconvey test runner app in a new terminal. This will also open a browser widow showing the results of the test runner.
+`update-go`      | Updates the go build system to latest version if necessary.
 
 #### Ruby on Rails related
 
