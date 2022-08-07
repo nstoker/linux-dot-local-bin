@@ -2,8 +2,12 @@
 
 FILE=Gemfile
 
-# If postgres is already running, it's not a problem, but should add a check to avoid re-running it
-# Benchmarking with and without a check would make sense. This is the way.
+# I had an issue with postgres not playing: fixed
+# Note to self for next time:
+# `DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rake db:schema:reload`
+# and
+# `RAILS_ENV=test DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rake db:schema:reload`
+# is your friend
 postgres start
 
 if [ -f "$FILE" ]; then

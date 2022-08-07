@@ -3,7 +3,7 @@
 APP=`basename $0`
 
 function start() {
-  docker run --name $APP -p 5432:5432 -e POSTGRES_PASSWORD=changeme -d $APP 
+  docker run --name $APP -p 5432:5432 -e POSTGRES_PASSWORD=$POSTGRES_PASS -d $APP
 }
 
 function stop() {
