@@ -1,0 +1,20 @@
+#!/bin/bash
+
+SOURCEFILE=docker-compose.yml
+COMMAND=postgres
+GREP=/user/bin/grep
+
+if [ -f "$SOURCEFILE" ]; then
+    case `$GREP "$COMMAND:[1-9]" -q -m 1 "$FILE"` in
+    0)
+        # run docker compose up in detached mode
+        docker-compose up -d $COMMAND
+        ;;
+    *)
+    echo "Shrugs: an error occurred"
+        ;;
+    esac
+
+else
+    echo "$SOURCEFILE not in current folder, giving up"
+fi

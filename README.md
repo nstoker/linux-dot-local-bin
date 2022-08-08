@@ -24,3 +24,4 @@ Script           | Purpose
 `start-guard`    | If the Guardfile is present in the current directory, then starts the guard service in a new terminal.
 `start-rabbitmq` | If the `docker-compose-rabbit.yml` exists, then starts the rabbitmq services. TODO: Can this be replaced by a generic container script.
 `start-rails`    | If the Gemfile is present in the current directory, then starts code, start-guard, and git cola.
+`start-postgres` | If a docker-compose.yml is present and contains postgres, then use docker compose to start postgres

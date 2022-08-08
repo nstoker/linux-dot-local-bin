@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Adding all files to git as wip."
+echo
+echo "You did remember to save everything in the editor, didn't you?"
+echo
+
+git add . && git commit -m "WIP"

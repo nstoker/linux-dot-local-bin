@@ -8,7 +8,7 @@ FILE=Gemfile
 # and
 # `RAILS_ENV=test DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rake db:schema:reload`
 # is your friend
-postgres start
+# postgres start TODO: not working the way I intend
 
 if [ -f "$FILE" ]; then
     code .
