@@ -2,10 +2,10 @@
 
 FILE=go.mod
 
-if [ -f "$FILE" ]; then
+if [ ! -f $FILE ]; then
+	echo "Is this a go folder?"
+fi
+
     code .
     start-goconvey
     git cola &
-else
-    echo "Is this a go folder?"
-fi

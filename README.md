@@ -2,7 +2,6 @@
 
 Some random scripts I find helpful.
 
-
 ## Container scripts
 
 Script      | Purpose
@@ -16,6 +15,7 @@ Script           | Purpose
 -----------------|---------
 `start-go`       | Checks if the directory contains a go.mod file, then starts code, go-convey, and git cola running.
 `start-goconvey` | Starts the goconvey test runner app in a new terminal. This will also open a browser widow showing the results of the test runner.
+`update-go`      | Updates the go build system to latest version if necessary.
 
 #### Ruby on Rails related
 
@@ -24,4 +24,4 @@ Script           | Purpose
 `start-guard`    | If the Guardfile is present in the current directory, then starts the guard service in a new terminal.
 `start-rabbitmq` | If the `docker-compose-rabbit.yml` exists, then starts the rabbitmq services. TODO: Can this be replaced by a generic container script.
 `start-rails`    | If the Gemfile is present in the current directory, then starts code, start-guard, and git cola.
-`start-postgres` | If a docker-compose.yml is present and contains postgres, then use docker compose to start postgres
+`start-postgres` | Obsolete? If a docker-compose.yml is present and contains postgres, then use docker compose to start postgres
