@@ -1,5 +1,5 @@
 #!/bin/bash
-
+GO_CMD=`which go`
 INSTALLED_VER_STR=($`go version`)
 INSTALLED_VER=${INSTALLED_VER_STR[2]}
 LATEST_GO_VER=$(curl -s 'https://go.dev/VERSION?m=text')
@@ -10,7 +10,7 @@ if [[ "${LATEST_GO_VER}" > "${INSTALLED_GO_VER}" ]]; then
 	DESTINATION="$HOME/Downloads/${LATEST_GO_VER}.linux-amd64.tar.gz"
 	if [ ! -f ${FULL_NAME} ]
 	then
-		wget "https://go.dev/dl/${FULL_NAME}"
+		wget "https://go.dev/dl/${FULL_NAME}" -o ${DESTINATION}
 	fi
 	
 	if [ -f ${FULL_NAME} ]
