@@ -1,9 +1,11 @@
 #!/bin/sh
 
 FILE=Guardfile
-
+TITLE="Guard"
+CMD="cd `pwd`; ls; bundle exec guard"
+CURDIR=`pwd`
 if [ -f "$FILE" ]; then
-	/usr/bin/gnome-terminal -- guard -c
+	/usr/bin/gnome-terminal --tab -- bash -ic "export TITLE_DEFAULT='$TITLE'; $CMD; exec bash"
 else
 	echo "$FILE was not found in the current directory."
 fi

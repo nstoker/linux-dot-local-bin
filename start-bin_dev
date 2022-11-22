@@ -1,0 +1,15 @@
+#!/bin/sh
+
+FILE=bin/dev
+NEEDS=Procfile.dev
+TITLE="bin/dev"
+CMD="cd `pwd`; bin/dev"
+
+if [ ! -f "$NEEDS" ]; then
+    echo "$NEEDS missing from current directory"
+elif [ ! -f "$FILE" ]; then
+	echo "$FILE was not found in the current directory."
+else
+    export PORT=$PORT
+	/usr/bin/gnome-terminal --tab -- bash -ic "$export TITLE_DEFAILT='$TITLE'; $CMD; exec bash"
+fi

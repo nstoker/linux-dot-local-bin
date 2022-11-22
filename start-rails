@@ -1,6 +1,10 @@
 #!/bin/bash
-
-FILE=Gemfile
+BIN_DEV=start-bin_dev
+DOCKER=/usr/local/bin/docker
+GEMFILE=Gemfile
+DEV_PROCFILE=Procfile.dev
+XDOTOOL=/usr/bin/xdotool
+OPEN_NEW_TAB="key ctrl+shift+t"
 
 # I had an issue with postgres not playing: fixed
 # Note to self for next time:
@@ -10,10 +14,27 @@ FILE=Gemfile
 # is your friend
 # postgres start TODO: not working the way I intend
 
-if [ -f "$FILE" ]; then
-    code .
-    start-guard
-    git cola &
+if [ "$( $DOCKER container inspect -f '{{.State.Status}}' 'clixifix-postgres-1' )" == "running" ]; then
+	echo "found it running!"
 else
-    echo "$FILE missing, not a Rails project directory"
+	$($DOCKER compose up -d postgres)
+fi
+
+See https://askubuntu.com/questions/315408/open-terminal-with-multiple-tabs-and-execute-application/1026563#1026563.
+if [ ! -f "$GEMFILE" ]; then
+    echo "$GEMFILE missing, not a Rails project directory"
+else
+    code .
+    git cola &
+    
+    if [ -f "$DEV_PROCFILE" ]; then
+      PORT=3000 start-bin_dev &
+      
+      # Without a second copy of rails s in guard
+      export DONT_RUN_RAILS_HERE=t
+    fi
+    
+    # This needs to be after the Procfile.dev check
+    start-guard &
+    fi
 fi
