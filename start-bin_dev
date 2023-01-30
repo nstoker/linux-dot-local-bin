@@ -1,9 +1,9 @@
 #!/bin/sh
 
 FILE=bin/dev
-NEEDS=Procfile.dev
+NEEDS=Procfile.dev_debug
 TITLE="bin/dev"
-CMD="cd `pwd`; bin/dev"
+CMD="cd `pwd`; foreman start -f $NEEDS"
 
 if [ ! -f "$NEEDS" ]; then
     echo "$NEEDS missing from current directory"
@@ -11,5 +11,5 @@ elif [ ! -f "$FILE" ]; then
 	echo "$FILE was not found in the current directory."
 else
     export PORT=$PORT
-	/usr/bin/gnome-terminal --tab -- bash -ic "$export TITLE_DEFAILT='$TITLE'; $CMD; exec bash"
+	/usr/bin/gnome-terminal --tab -- bash -ic "$export TITLE_DEFAULT='$TITLE'; $CMD; exec bash"
 fi

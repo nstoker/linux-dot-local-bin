@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# The maximum expiry that aws allows is 7 days.
+EXPIRY=604800
+
+# s3://clixifix-production-eu/data-exports/344-Multiplex/clixifix-multiplex_2018-attachments-e3eeb62b-6d96-4728-96ce-e9450efd681f.zip
+
+if [ $# -eq 0 ]; then
+    echo "usage"
+    echo "$0 s3-link"
+    exit 1
+else
+    aws s3 presign $1 --expires-in $EXPIRY
+fi

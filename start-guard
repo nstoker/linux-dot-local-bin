@@ -2,7 +2,7 @@
 
 FILE=Guardfile
 TITLE="Guard"
-CMD="cd `pwd`; ls; bundle exec guard"
+CMD="cd `pwd`; bundle exec guard"
 CURDIR=`pwd`
 if [ -f "$FILE" ]; then
 	/usr/bin/gnome-terminal --tab -- bash -ic "export TITLE_DEFAULT='$TITLE'; $CMD; exec bash"

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+FILE=
+NEEDS="config/tailwind.config.js"
+CMD="cd `pwd`;bundle exec rails tailwindcss:watch"
+
+# Only start if a tailwind config is setup
+if [ -f "$NEEDS" ]; then
+    /usr/bin/gnome-terminal --tab -- bash -ic "$CMD; exec bash"
+fi

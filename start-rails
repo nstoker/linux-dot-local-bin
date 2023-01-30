@@ -20,21 +20,21 @@ else
 	$($DOCKER compose up -d postgres)
 fi
 
-See https://askubuntu.com/questions/315408/open-terminal-with-multiple-tabs-and-execute-application/1026563#1026563.
+# See https://askubuntu.com/questions/315408/open-terminal-with-multiple-tabs-and-execute-application/1026563#1026563.
 if [ ! -f "$GEMFILE" ]; then
     echo "$GEMFILE missing, not a Rails project directory"
 else
+    # Clean up logs files
+    rails log:clear &
+
     code .
     git cola &
-    
+
     if [ -f "$DEV_PROCFILE" ]; then
-      PORT=3000 start-bin_dev &
-      
-      # Without a second copy of rails s in guard
-      export DONT_RUN_RAILS_HERE=t
+      # This should start Procfile.dev_debug which does not start a rails server.
+      PORT=3000 start-bin_dev &      
     fi
-    
-    # This needs to be after the Procfile.dev check
+
+    # This needs to be after the Procfile.dev check - not important now
     start-guard &
-    fi
 fi

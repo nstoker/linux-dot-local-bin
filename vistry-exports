@@ -1,0 +1,23 @@
+#!/bin/bash
+
+EMAIL=neil.stoker@clixifix.co.uk
+BU=("309" "265" "112" "28" "42" "45" "44" "91")
+
+if [ -z "$1" ]; then
+		echo "usage:"
+		echo "$0 2022M09 email"
+		echo "where 2022M09 is the year and month to run the commands for"
+		echo " and email is an optional email address, defaults to neil stoker's clixifix email"
+		exit 1
+	fi
+
+	if [ -n "$2" ]; then
+		echo using email $2
+		EMAIL=$2
+	fi
+	
+for bu in "${BU[@]}" ; do
+	heroku run rails exports:s3_account[$bu,$EMAIL,clixifix-vistry-data-exports1,$1] -a clixifix-production-eu
+done
+
+echo "Finished"
