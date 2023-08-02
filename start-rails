@@ -32,9 +32,10 @@ else
 
     if [ -f "$DEV_PROCFILE" ]; then
       # This should start Procfile.dev_debug which does not start a rails server.
-      PORT=3000 start-bin_dev &      
+      #PORT=3000 
+      start-bin_dev &      
     fi
-
+    
     # This needs to be after the Procfile.dev check - not important now
     start-guard &
 fi

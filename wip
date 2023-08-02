@@ -5,4 +5,13 @@ echo
 echo "You did remember to save everything in the editor, didn't you?"
 echo
 
-git add . && git commit -m "WIP"
+read -r -d '' VAR << EOM
+Work In Progress Checkpoint
+
+These files my not be ready for production, they were committed via a
+script to protect against issues.
+EOM
+
+git add .
+
+git commit -m "$VAR"
